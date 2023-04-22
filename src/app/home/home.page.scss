@@ -1,0 +1,28 @@
+ion-header {
+  height: 70px;
+
+  ion-toolbar {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    
+    .title {
+      display: flex;
+      text-align: start;
+      align-items: center;
+      margin-left: 10px;
+
+      span {
+        margin-left: 1em;
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* ion-skeleton-text {
+  --border-radius: 9999px;
+  --background: rgba(188, 0, 255, 0.065);
+  --background-rgb: 188, 0, 255;
+} */

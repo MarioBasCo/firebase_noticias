@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <div class="title">
+      <ion-icon src="assets/icon/news.svg" style="font-size: 4rem;"></ion-icon>
+      <span>NotiEcuador</span>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="setTheme(!darkMode.value)">
+        <ion-icon [name]="darkMode.value ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-end ion-margin-top ion-margin-end">
+    <ion-button color="dark" (click)="openModal()">
+      <ion-icon name="newspaper" slot="end"></ion-icon>
+      Añadir
+    </ion-button>
+  </div>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="3" size-md="6" size-lg="5">
+        <ion-card *ngFor="let item of data" class="ion-margin-bottom">
+          <img [alt]="item.titulo" [src]="item.imagen" />
+          <ion-card-header>
+            <ion-card-title>{{item.titulo}}</ion-card-title>
+            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+          </ion-card-header>
+          <ion-card-content class="ion-text-justify">
+            <ion-text>{{item.descripcion}}</ion-text>
+          </ion-card-content>
+          <ion-button fill="clear" color="secondary" (click)="openModal(item)">
+            <ion-icon name="pencil" slot="start"></ion-icon>Editar
+          </ion-button>
+          <ion-button fill="clear" color="danger" (click)="deleteNew(item)"><ion-icon name="trash" slot="start"></ion-icon>Eliminar</ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="!loaded">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="3" size-md="6" size-lg="5">
+        <ion-card *ngFor="let item of [1,1,1,1,1,1]" class="ion-margin-bottom">
+          <ion-col size="12" size-lg="4" size-md="4" style="margin: 0 !important; padding: 0 !important;">
+            <ion-skeleton-text [animated]="true" style="margin: 0 !important; width: 100%; height: 140px; border-radius: 0 !important;"></ion-skeleton-text>
+          </ion-col>
+
+          <ion-card-header>
+            <ion-skeleton-text [animated]="true" style="width: 80%; height: 16px" ></ion-skeleton-text>
+          </ion-card-header>
+          
+          <ion-card-content class="ion-text-justify">
+            <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+            <ion-skeleton-text [animated]="true" style="width: 100%;"></ion-skeleton-text>
+            <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+            
+            <ion-row style="width: 70%;">
+              <ion-col>
+                <ion-skeleton-text [animated]="true" style="width: 90%; height: 14px"></ion-skeleton-text>
+              </ion-col>
+              <ion-col>
+                <ion-skeleton-text [animated]="true" style="width: 90%; height: 14px"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
